@@ -1,0 +1,91 @@
+ft_memset:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_bzero:      [OK] [OK] [OK] [OK] 
+ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH] [NO CRASH] [OK] [OK] 
+[no crash]: your memcpy does not segv with NULL on first params
+Test code:
+	ft_memcpy(((void*)0), "segfaulter tu dois", 17);
+
+
+[no crash]: your memcpy does not segv with NULL on second params
+Test code:
+	ft_memcpy("            ", ((void*)0), 17);
+
+
+ft_memccpy:    [MISSING]
+ft_memmove:    [OK] [CRASH] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] [OK] 
+[crash]: your memmove's return is false/does not work with basic input
+Test code:
+	char *src = "thanks to @apellicc for this test !\r\n";
+	char dst1[0xF0];
+	int size = strlen(src);
+	char *r1 = memmove(dst1, src, size);
+	char *r2 = ft_memmove(dst1, src, size);
+
+	if (r1 != r2)
+		exit(TEST_FAILED);
+	r1 = memmove("", "" - 1, 0);
+	r2 = ft_memmove("", "" - 1, 0);
+	if (r1 != r2)
+		exit(TEST_FAILED);
+	exit(TEST_SUCCESS);
+
+
+[crash]: your memmove does not well with NULL as both parameters and size
+Test code:
+	ft_memmove(((void*)0), ((void*)0), 5);
+
+
+ft_memchr:     [MISSING]
+ft_memcmp:     [MISSING]
+ft_strlen:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_isalpha:    [OK] 
+ft_isdigit:    [OK] 
+ft_isalnum:    [FAILED] 
+[fail]: your isalnum just doesn't work, REALLY ?!
+Test code:
+	int i;
+
+	i = -1;
+	while (i < 530)
+	{
+		if (!!ft_isalnum(i) != !!((*__ctype_b_loc ())[(int) ((i))] & (unsigned short int) _ISalnum))
+			exit(TEST_FAILED);
+		i++;
+	}
+	exit(TEST_SUCCESS);
+
+Diffs:
+
+
+ft_isascii:    [OK] 
+ft_isprint:    [OK] 
+ft_toupper:    [MISSING]
+ft_tolower:    [MISSING]
+ft_strchr:     [MISSING]
+ft_strrchr:    [MISSING]
+ft_strncmp:    [MISSING]
+ft_strlcpy:    [MISSING]
+ft_strlcat:    [MISSING]
+ft_strnstr:    [MISSING]
+ft_atoi:       [MISSING]
+ft_calloc:     [MISSING]
+ft_strdup:     [MISSING]
+ft_substr:     [MISSING]
+ft_strjoin:    [MISSING]
+ft_strtrim:    [MISSING]
+ft_split:      [MISSING]
+ft_itoa:       [MISSING]
+ft_strmapi:    [MISSING]
+ft_putchar_fd: [MISSING]
+ft_putstr_fd:  [MISSING]
+ft_putendl_fd: [MISSING]
+ft_putnbr_fd:  [MISSING]
+ft_lstnew:     [MISSING]
+ft_lstadd_front: [MISSING]
+ft_lstsize:    [MISSING]
+ft_lstlast:    [MISSING]
+ft_lstadd_back:[MISSING]
+ft_lstdelone:  [MISSING]
+ft_lstclear:   [MISSING]
+ft_lstiter:    [MISSING]
+ft_lstmap:     [MISSING]

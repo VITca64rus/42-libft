@@ -27,4 +27,8 @@ test:
 	gcc -c main.c
 	gcc main.o -L. -lft
 
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC_FILES)
+	gcc -nostartfiles -shared -o libft.so $(OBJ_FILES)
+
 .PHONY: all clean fclean re libft.a

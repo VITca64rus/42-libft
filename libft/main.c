@@ -17,7 +17,7 @@ int	main(void)
 	else
 		printf("NO\n");
 	printf("------TEST FT_ISALNUM------\n");
-	if (ft_isalnum('A') != 0 && ft_isalnum('z') != 0 \
+	if (ft_isalnum(-1) == 0 && ft_isalnum('z') != 0 \
 		&& ft_isalnum('.') == 0 && ft_isalnum('4') != 0)
 		printf("OK\n");
 	else
