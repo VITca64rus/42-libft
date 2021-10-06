@@ -1,12 +1,13 @@
 NAME := libft.a
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
-SRC_FILES := ft_isdigit.c ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c
+SRC_FILES := ft_isdigit.c ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+			ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c \
+			ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c \
+			ft_memchr.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
-all: obj $(NAME)
-
-obj: $(SRC_FILES)
+all: $(NAME)
 
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -28,7 +29,7 @@ test:
 	gcc main.o -L. -lft
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC_FILES)
-	gcc -nostartfiles -shared -o libft.so $(OBJ_FILES)
+	$(CC) -fPIC $(CFLAGS) $(SRC)
+	gcc -shared -o libft.so $(OBJ)
 
 .PHONY: all clean fclean re libft.a
