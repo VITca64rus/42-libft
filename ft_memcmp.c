@@ -5,15 +5,17 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	size_t	i;
 
 	i = 0;
+	unsigned char	*ss1;
+	unsigned char	*ss2;
 
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
 	while (i < n)
 	{
-		if ((unsigned char)s1[i] > (unsigned char)s2[i])
-			return ((unsigned char)s1[i]-(unsigned char)s2[i]);
-		else if ((unsigned char)s1[i] < (unsigned char)s2[i])
-			return ((unsigned char)s1[i]-(unsigned char)s2[i]);
-		if ((unsigned char)s1[i] == '\0' || (unsigned char)s2[i] == '\0')
-			return ((unsigned char)s1[i]-(unsigned char)s2[i]);
+		if (ss1[i] > ss2[i])
+			return (ss1[i]-ss2[i]);
+		else if (ss1[i] < ss2[i])
+			return (ss1[i]-ss2[i]);
 		i++;
 	}
 	return (0);
