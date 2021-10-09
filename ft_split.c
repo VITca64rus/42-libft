@@ -27,9 +27,11 @@ char	**ft_split(char const *s, char c)
 	res = (char **)malloc(sizeof(char *) * (count_word + 1));
 	while (i < count_word)
 	{
-		res[i] = ft_substr(s, start_word, length_word); //FIX_ME
+		res[i] = ft_substr(s, start_word, length_word); //FIX_ME start_word etc
+		i++;
 	}
-	//return (res);
+	res[i] = ((void *)0);
+	return (res);
 }
 
 int main()
