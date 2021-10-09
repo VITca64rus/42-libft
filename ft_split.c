@@ -25,6 +25,10 @@ char	**ft_split(char const *s, char c)
 
 	count_word = ft_count_word(s, c);
 	res = (char **)malloc(sizeof(char *) * (count_word + 1));
+	while (i < count_word)
+	{
+		res[i] = ft_substr(s, start_word, length_word); //FIX_ME
+	}
 	//return (res);
 }
 
