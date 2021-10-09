@@ -24,16 +24,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	at_start = 0;
 	if (!s1)
 		return ((void *)0);
+	if (ft_strlen(s1) == 0)
+		return (ft_substr(s1, 0, 0));
 	while (check_in(s1[at_start], (char *)set) == 1 && s1[at_start])
 		at_start++;
 	at_end = 0;
-	if (ft_strlen(s1) > 0)
-		i = ft_strlen(s1) - 1;
-	else
-		i = 0;
+	i = ft_strlen(s1) - 1;
 	while (check_in(s1[i], (char *)set) == 1 && i > 0)
 	{
-		
 		at_end++;
 		i--;
 	}
