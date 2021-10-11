@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 17:26:54 by sazelda           #+#    #+#             */
+/*   Updated: 2021/10/11 17:34:40 by sazelda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 static unsigned int	ft_get_len(int n)
 {
-	unsigned int res;
+	unsigned int	res;
+
 	res = 0;
 	if (n == -2147483648)
 		return (11);
@@ -29,7 +42,7 @@ static char	*ft_create_zero(void)
 	return (res);
 }
 
-static void ft_work_with_minus(char	*res, int *n, unsigned int *len)
+static void	ft_work_with_minus(char	*res, int *n, unsigned int *len)
 {
 	res[0] = '-';
 	if (*n != -2147483648)

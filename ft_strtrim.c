@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 17:29:04 by sazelda           #+#    #+#             */
+/*   Updated: 2021/10/11 17:50:40 by sazelda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	check_in(char a, char *s)
@@ -38,4 +50,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	res = ft_substr(s1, at_start, ft_strlen(s1) - at_end - at_start);
 	return (res);
 }
-

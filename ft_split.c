@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 17:28:22 by sazelda           #+#    #+#             */
+/*   Updated: 2021/10/11 17:59:28 by sazelda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static unsigned int	ft_count_word(char const *s, char c)
@@ -67,8 +79,6 @@ char	**ft_split(char const *s, char c)
 	char			**res;
 	unsigned int	i;
 	unsigned int	j;
-	unsigned int	start_word;
-	unsigned int	length_word;
 
 	if (!s)
 		return ((void *)0);
@@ -80,9 +90,8 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	while (j < count_word)
 	{
-		start_word = ft_get_id_next_word(s, c, &i);
-		length_word = ft_get_length_word(s, c, &i);
-		res[j] = ft_substr(s, start_word, length_word);
+		res[j] = ft_substr(s, ft_get_id_next_word(s, c, &i), \
+							ft_get_length_word(s, c, &i));
 		if (!res[j])
 			ft_clean_all(res, j);
 		j++;

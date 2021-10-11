@@ -1,6 +1,19 @@
-static void go_to(const char *str, int *i, int *znak)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/11 17:24:25 by sazelda           #+#    #+#             */
+/*   Updated: 2021/10/11 17:32:14 by sazelda          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+static void	go_to(const char *str, int *i, int *znak)
 {
-	while (str[*i] == ' ' || str[*i] == '\t' || str[*i] == '\n' || str[*i] == '\v' || str[*i] == '\f' || str[*i] == '\r')
+	while (str[*i] == ' ' || str[*i] == '\t' || str[*i] == '\n' \
+			|| str[*i] == '\v' || str[*i] == '\f' || str[*i] == '\r')
 		*i = *i + 1;
 	if (str[*i] == '-')
 	{
@@ -14,8 +27,8 @@ static void go_to(const char *str, int *i, int *znak)
 int	ft_atoi(const char *str)
 {
 	long int	res;
-	int	i;
-	int	znak;
+	int			i;
+	int			znak;
 
 	res = 0;
 	i = 0;

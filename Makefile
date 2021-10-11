@@ -32,6 +32,7 @@ $(NAME_BONUS): $(OBJ_FILES) $(OBJ_FILES_BONUS)
 
 clean:
 	rm -f $(OBJ_FILES)
+	rm -f $(OBJ_FILES_BONUS)
 
 fclean: clean
 	rm -f $(NAME)
