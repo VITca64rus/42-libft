@@ -64,6 +64,8 @@ char	**ft_split(char const *s, char c)
 		return ((void *)0);
 	count_word = ft_count_word(s, c);
 	res = (char **)malloc(sizeof(char *) * (count_word + 1));
+	if (!res)
+		return ((void *)0);
 	i = 0;
 	j = 0;
 	while (j < count_word)
