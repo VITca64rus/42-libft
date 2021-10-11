@@ -6,23 +6,17 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:27:59 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/11 17:40:50 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/11 18:07:38 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static void	ft_next(unsigned const char	*s, unsigned char		*d, size_t len)
 {
-	unsigned const char	*s;
-	unsigned char		*d;
-	size_t				i;
+	size_t	i;
 
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
-	if (!len || d == s)
-		return (dst);
 	i = 0;
 	if (d > s)
 	{
@@ -35,10 +29,24 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		d[len] = s[len];
 	}
 	else
+	{
 		while (i < len)
 		{
 			d[i] = s[i];
 			i++;
 		}
+	}
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	unsigned const char	*s;
+	unsigned char		*d;
+
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	if (!len || d == s)
+		return (dst);
+	ft_next(s, d, len);
 	return (dst);
 }
