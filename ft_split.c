@@ -7,13 +7,46 @@ static unsigned int	ft_count_word(char const *s, char c)
 
 	i = 0;
 	res = 0;
-	while (s[i] == c)
+	while (s[i] == c && c != '\0')
 		i++;
+	if (i == 0 && s[i] != c)
+	{
+		res++;
+		i++;
+	}
 	while (s[i])
 	{
-		if (s[i - 1] == c && s[i] != c)
+		if ((s[i - 1] == c && s[i] != c))
 			res++;
 		i++;
+	}
+	return (res);
+}
+
+static unsigned int	ft_get_id_next_word(const char *s, char c, unsigned int *i)
+{
+	while (s[*i] == c)
+		*i = *i + 1;
+	if (*i == 0 && s[*i] != c)
+		return (*i);
+	while (s[*i])
+	{
+		if ((s[*i - 1] == c && s[*i] != c))
+			return (*i);
+		*i = *i + 1;
+	}
+	return (ft_strlen(s) + 1);
+}
+
+static unsigned int	ft_get_length_word(const char *s, char c, unsigned int *i)
+{
+	unsigned int	res;
+
+	res = 0;
+	while (s[*i] != c && s[*i] != '\0')
+	{
+		*i = *i + 1;
+		res++;
 	}
 	return (res);
 }
@@ -22,21 +55,24 @@ char	**ft_split(char const *s, char c)
 {
 	unsigned int	count_word;
 	char			**res;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	start_word;
+	unsigned int	length_word;
 
+	if (!s)
+		return ((void *)0);
 	count_word = ft_count_word(s, c);
 	res = (char **)malloc(sizeof(char *) * (count_word + 1));
-	while (i < count_word)
+	i = 0;
+	j = 0;
+	while (j < count_word)
 	{
-		res[i] = ft_substr(s, start_word, length_word); //FIX_ME start_word etc
-		i++;
+		start_word = ft_get_id_next_word(s, c, &i);
+		length_word = ft_get_length_word(s, c, &i);
+		res[j] = ft_substr(s, start_word, length_word);
+		j++;
 	}
-	res[i] = ((void *)0);
+	res[j] = ((void *)0);
 	return (res);
-}
-
-int main()
-{
-	char	a[] = " I d  am   Vikt  ";
-	printf("%d", ft_count_word(a, ' '));
-
 }
