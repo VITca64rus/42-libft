@@ -51,6 +51,16 @@ static unsigned int	ft_get_length_word(const char *s, char c, unsigned int *i)
 	return (res);
 }
 
+static void	ft_clean_all(char **res, unsigned int j)
+{
+	j--;
+	while (j >= 0)
+	{
+		free(res[j]);
+	}
+	free(res);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	unsigned int	count_word;
@@ -73,6 +83,8 @@ char	**ft_split(char const *s, char c)
 		start_word = ft_get_id_next_word(s, c, &i);
 		length_word = ft_get_length_word(s, c, &i);
 		res[j] = ft_substr(s, start_word, length_word);
+		if (!res[j])
+			ft_clean_all(res, j);
 		j++;
 	}
 	res[j] = ((void *)0);

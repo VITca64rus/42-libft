@@ -1,4 +1,5 @@
 NAME := libft.a
+NAME_BONUS := libft.a
 CC := gcc
 CFLAGS := -Wall -Wextra -Werror
 SRC_FILES := ft_isdigit.c ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
@@ -6,11 +7,17 @@ SRC_FILES := ft_isdigit.c ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft
 			ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
 			ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c \
 			ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
+SRC_FILES_BONUS := ft_lstnew.c ft_lstadd_front.c
 OBJ_FILES = $(SRC_FILES:.c=.o)
+OBJ_FILES_BONUS = $(SRC_FILES_BONUS:.c=.o)
 
 all: obj $(NAME)
 
+bonus: obj obj_bonus $(NAME_BONUS)
+
 obj: $(SRC_FILES)
+
+obj_bonus: $(SRC_FILES_BONUS)
 
 %.o: %.c libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -18,6 +25,10 @@ obj: $(SRC_FILES)
 $(NAME): $(OBJ_FILES)
 	ar rc $(NAME) $(OBJ_FILES)
 	ranlib $(NAME)
+
+$(NAME_BONUS): $(OBJ_FILES) $(OBJ_FILES_BONUS)
+	ar rc $(NAME_BONUS) $(OBJ_FILES) $(OBJ_FILES_BONUS)
+	ranlib $(NAME_BONUS)
 
 clean:
 	rm -f $(OBJ_FILES)
