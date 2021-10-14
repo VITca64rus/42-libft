@@ -6,7 +6,7 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:28:22 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/11 18:04:26 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/14 11:40:29 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static unsigned int	ft_count_word(char const *s, char c)
 
 	i = 0;
 	res = 0;
+	if (ft_strlen(s) == 0)
+		return (0);
 	while (s[i] == c && c != '\0')
 		i++;
 	if (i == 0 && s[i] != c)
