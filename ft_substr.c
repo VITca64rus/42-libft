@@ -6,7 +6,7 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:29:11 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/11 17:53:33 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/14 14:38:22 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s)
 		return ((void *)0);
-	if (len < 0)
-	{
-		end = ft_strlen(s) - 1 + len;
-	}
-	else
-		end = len + start;
+	end = len + start;
 	res = malloc(end - start + 1);
 	if (!res)
 		return ((void *)0);

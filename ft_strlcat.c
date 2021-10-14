@@ -6,14 +6,14 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:28:42 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/14 11:33:03 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/14 14:19:46 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	len_src;
 	size_t	len_dst;

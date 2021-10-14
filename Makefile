@@ -1,7 +1,6 @@
 NAME := libft.a
-NAME_BONUS := libft.a
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := -Wall -Wextra -Werror -std=c99
 SRC_FILES := ft_isdigit.c ft_isalpha.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c \
 			ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c \
 			ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c \
@@ -15,7 +14,9 @@ OBJ_FILES_BONUS = $(SRC_FILES_BONUS:.c=.o)
 
 all: obj $(NAME)
 
-bonus: obj obj_bonus $(NAME_BONUS)
+bonus: obj_bonus $(OBJ_FILES_BONUS) $(NAME)
+	ar rc $(NAME) $(OBJ_FILES_BONUS)
+	ranlib $(NAME)
 
 obj: $(SRC_FILES)
 
@@ -27,10 +28,6 @@ obj_bonus: $(SRC_FILES_BONUS)
 $(NAME): $(OBJ_FILES)
 	ar rc $(NAME) $(OBJ_FILES)
 	ranlib $(NAME)
-
-$(NAME_BONUS): $(OBJ_FILES) $(OBJ_FILES_BONUS)
-	ar rc $(NAME_BONUS) $(OBJ_FILES) $(OBJ_FILES_BONUS)
-	ranlib $(NAME_BONUS)
 
 clean:
 	rm -f $(OBJ_FILES)

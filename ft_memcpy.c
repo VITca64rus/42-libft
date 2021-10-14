@@ -6,13 +6,13 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:27:52 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/11 17:38:48 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/14 14:35:36 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	unsigned char		*d;
 	unsigned const char	*s;
