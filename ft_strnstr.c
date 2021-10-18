@@ -6,7 +6,7 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:28:58 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/11 18:57:45 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/18 14:02:23 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 char	*ft_strnstr(const char *havstack, const char *needle, size_t len)
 {
+	size_t	pos;
 	size_t	i;
-	size_t	j;
 
-	i = 0;
-	if (ft_strlen(needle) == 0)
+	if (!*needle)
 		return ((char *)havstack);
-	if (len == 0)
-		return (NULL);
-	while (havstack[i] != '\0' && i < len)
+	pos = 0;
+	while (havstack[pos] != '\0' && (size_t)pos < len)
 	{
-		j = 0;
-		while (needle[j] != '\0' && needle[j] == havstack[i + j] && i + j < len)
+		if (havstack[pos] == needle[0])
 		{
-			j++;
+			i = 1;
+			while (needle[i] != '\0' && havstack[pos + i] == needle[i] \
+					&& (size_t)(pos + i) < len)
+				++i;
+			if (needle[i] == '\0')
+				return ((char *)&havstack[pos]);
 		}
-		if (j == ft_strlen(needle))
-			return ((char *)&havstack[i]);
-		else if (j != 0)
-			return ((void *)0);
-		i++;
+		++pos;
 	}
-	return ((void *)0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:28:22 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/14 11:40:29 by sazelda          ###   ########.fr       */
+/*   Updated: 2021/10/14 15:57:44 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,19 @@ static unsigned int	ft_get_length_word(const char *s, char c, unsigned int *i)
 	return (res);
 }
 
-static void	ft_clean_all(char **res, unsigned int j)
+static int	ft_clean_all(char **res, unsigned int j)
 {
-	j--;
-	while (j >= 0)
+	if (!res[j])
 	{
-		free(res[j]);
+		j--;
+		while (j >= 0)
+		{
+			free(res[j]);
+		}
+		free(res);
+		return (0);
 	}
-	free(res);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -94,8 +99,8 @@ char	**ft_split(char const *s, char c)
 	{
 		res[j] = ft_substr(s, ft_get_id_next_word(s, c, &i), \
 							ft_get_length_word(s, c, &i));
-		if (!res[j])
-			ft_clean_all(res, j);
+		if (ft_clean_all(res, j) == 0)
+			return ((void *)0);
 		j++;
 	}
 	res[j] = ((void *)0);
