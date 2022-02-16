@@ -15,14 +15,14 @@ SRC_B:= 	ft_lstnew.c ft_lstadd_front.c ft_lstlast.c ft_lstadd_back.c \
 OBJ = $(patsubst %c,%o,$(SRC))
 OBJ_B = $(patsubst %c,%o,$(SRC_B))
 
-D_FILES = $(patsubstr %c,%d, $(SRC) $(SRC_B))
+D_FILES = $(patsubst %c,%d, $(SRC) $(SRC_B))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $?
 
-%.o: %.c libft.h
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ -MD
 
 include $(wildcard $(D_FILES))
