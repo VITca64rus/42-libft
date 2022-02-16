@@ -6,7 +6,7 @@
 /*   By: sazelda <sazelda@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 17:28:22 by sazelda           #+#    #+#             */
-/*   Updated: 2021/10/14 15:57:44 by sazelda          ###   ########.fr       */
+/*   Updated: 2022/02/17 00:43:42 by sazelda          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ static int	ft_clean_all(char **res, unsigned int j)
 	if (!res[j])
 	{
 		j--;
-		while (j >= 0)
+		while (j > 0)
 		{
 			free(res[j]);
+			j--;
 		}
+		free(res[j]);
 		free(res);
 		return (0);
 	}
